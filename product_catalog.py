@@ -4,7 +4,7 @@ from collections import Counter
 from copy import deepcopy
 from urllib.parse import urlsplit, urlunsplit
 
-CATALOG_VERSION = 8
+CATALOG_VERSION = 9
 SET_ID = "pokemon-tcg-30th-celebration"
 SET_NAME = "Pokémon TCG: 30th Celebration"
 
@@ -38,6 +38,13 @@ OFFICIAL_PRODUCTS = (
             r"\bupc\b",
             r"\bpremium[ -]?(?:collection|kollektion(?:en)?)\b.*\b(?:day|night|tag|nacht)\b",
             r"\b(?:day|night|tag|nacht)\b.*\bpremium[ -]?(?:collection|kollektion(?:en)?)\b",
+        ),
+    },
+    {
+        "id": "BOOSTER_BUNDLE",
+        "name": "Booster Bundle",
+        "patterns": (
+            r"\bbooster[ -]?bundle\b",
         ),
     },
 )
@@ -132,7 +139,7 @@ def classify_official_product(title, url=""):
     # If the title explicitly names a different sealed 30th product family, do
     # not allow an unrelated category word in the URL to turn it into ETB/UPC.
     explicit_other = re.search(
-        r"\b(?:first partner|booster(?: bundle)?|mini tin|tech sticker|battle deck|figure collection|ex box|binder|poster|blister)\b",
+        r"\b(?:first partner|mini tin|tech sticker|battle deck|figure collection|ex box|binder|poster|blister)\b",
         title_context,
         re.I,
     )
@@ -167,7 +174,7 @@ def is_target_standalone_product(title, url=""):
     title_context = compact_text(title)
     if re.search(r"\blive[- ]?break\b|\brip[- ]?(?:and|&)\s*ship\b|\bim live[- ]?stream offnen\b", title_context):
         return False
-    if re.search(r"\bbooster bundle\b|\bposter collection\b|\bmini tin\b", title_context) and re.search(r"\bbundle\b|\+", title_context):
+    if re.search(r"\bposter collection\b|\bmini tin\b", title_context) and re.search(r"\bbundle\b|\+", title_context):
         return False
     item = classify_official_product(title, url)
     if not item:
@@ -178,7 +185,7 @@ def is_target_standalone_product(title, url=""):
     # sets and sealed cases. For ETBs, cases are also valid. Only retailer
     # bundles/packs that mix a target product with other product families are
     # excluded.
-    if product_id == "ULTRA_PREMIUM_COLLECTION":
+    if product_id in {"ULTRA_PREMIUM_COLLECTION", "BOOSTER_BUNDLE"}:
         return True
 
     if product_id in {"ELITE_TRAINER_BOX", "POKEMON_CENTER_ELITE_TRAINER_BOX"}:
@@ -345,7 +352,7 @@ def rejection_reason(product):
     if classify_official_product(title, url) is None:
         return "not a monitored 30th Celebration product family"
     if not is_target_standalone_product(title, url):
-        return "not a target UPC or ETB listing"
+        return "not a target UPC, ETB, or Booster Bundle listing"
     return ""
 
 
