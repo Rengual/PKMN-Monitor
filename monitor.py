@@ -35,9 +35,9 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9,de;q=0.7",
 }
 TIMEOUT = (5, 15)
-# Begrenzte Parallelität auf Shop-Ebene: schnellere Gesamtlaufzeit ohne
-# unbegrenzte Anfragen an einzelne Händler.
+# Begrenzte Parallelität auf Shop- und Produktebene.
 MAX_SHOP_WORKERS = 8
+MAX_PRODUCT_WORKERS = 4
 DISCOVERY_TIMEOUTS = {
     "comicattack": (3, 7),
     "bulkparadise": (4, 8),
@@ -760,26 +760,37 @@ def process_shop(shop, old_shop, known_urls):
                 links.setdefault(_clean_url(url), "")
 
         products = {}
+        product_e        products = {}
         product_errors = []
         failed_product_urls = []
-        for url, link_title in links.items():
-            # Explicitly excluded listings need no detail request. In particular,
-            # a failing German product must not mark an English-only shop scan bad.
+
+        def check_link(item):
+            url, link_title = item
+            # Klar ausgeschlossene Treffer benötigen keinen Detailabruf.
             if (link_title and _looks_30th(link_title) and _looks_target(link_title)
                     and not product_catalog.candidate_allowed(link_title, url=url)):
-                continue
+                return url, None, 0, None
             try:
                 product, elapsed = inspect_product(shop, url, link_title)
+                return url, product, elapsed, None
+            except Exception as exc:
+                return url, None, 0, exc
+
+        # Alle gefundenen 30th-Kandidaten parallel prüfen. Die begrenzte
+        # Workerzahl verhindert unkontrolliert viele Requests an einen Händler.
+        with ThreadPoolExecutor(max_workers=min(MAX_PRODUCT_WORKERS, max(1, len(links)))) as pool:
+            futures = [pool.submit(check_link, item) for item in links.items()]
+            for future in as_completed(futures):
+                url, product, elapsed, error = future.result()
                 detail_ms += elapsed
+                if error is not None:
+                    product_errors.append(f"{url}: {error}")
+                    failed_product_urls.append(url)
+                    continue
                 if product:
                     variants = product.pop("_variants", [])
                     products[product["url"]] = product
-                    products.update({item["url"]: item for item in variants})
-            except Exception as exc:
-                product_errors.append(f"{url}: {exc}")
-                failed_product_urls.append(url)
-
-        elapsed_ms = int((time.monotonic() - started) * 1000)
+                    products.update({item["url"]: item for item in variants})nic() - started) * 1000)
         status = {
             "name": shop["name"], "ok": not product_errors,
             "failures": int((old_shop or {}).get("failures", 0)) + 1 if product_errors else 0,
