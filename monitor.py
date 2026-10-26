@@ -82,7 +82,7 @@ def _all_shops():
             shop.pop("fallback_product_urls", None)
             shop.pop("reader_fallback", None)
             shop.pop("max_workers", None)
-            shop.pop("prospect_discoveries", None)
+            # Prospect paths bleiben als reguläre Alternativen für HTTP-404 erhalten.
             shops[shop["id"]] = shop
     return list(shops.values())
 
