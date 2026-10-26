@@ -60,7 +60,6 @@ DISCOVERY_OVERRIDES = {
     "playingcards": "/pokemon.html",
     "nettoonline": "/pokemon-tcg-30th-anniversary-celebration-elite-trainer-box-englisch/p-3203254000",
     "kaufland": "/product/573179383/",
-    "galaxus": "/de/s5/product/pokemon-30th-anniversary-elite-trainer-box-en-englisch-box-set-collection-sammelkarten-72348007",
     "poketcgcenter": "/shop/pokemon-tcg/pokemon-tcg-30th-celebration-ultra-premium-collection-day-night/",
     # Pokémon-Produktarchiv statt der Startseite oder einer zu engen 30th-Suche.
     "bulkparadise": "/product-tag/pokemon/",
