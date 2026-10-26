@@ -760,7 +760,6 @@ def process_shop(shop, old_shop, known_urls):
                 links.setdefault(_clean_url(url), "")
 
         products = {}
-        product_e        products = {}
         product_errors = []
         failed_product_urls = []
 
@@ -790,7 +789,8 @@ def process_shop(shop, old_shop, known_urls):
                 if product:
                     variants = product.pop("_variants", [])
                     products[product["url"]] = product
-                    products.update({item["url"]: item for item in variants})nic() - started) * 1000)
+                    products.update({item["url"]: item for item in variants})
+        elapsed_ms = int((time.monotonic() - started) * 1000)
         status = {
             "name": shop["name"], "ok": not product_errors,
             "failures": int((old_shop or {}).get("failures", 0)) + 1 if product_errors else 0,
