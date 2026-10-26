@@ -897,8 +897,8 @@ ALL_PROSPECTS = [{'id': 'rossmann',
  {'id': 'galeria',
   'name': 'GALERIA',
   'base': 'https://www.galeria.de',
-  # Die Suchroute liefert im Monitor 404; die öffentlich indexierte Pokémon-Karten-Kategorie nutzen.
-  'discovery': '/kinder/spielzeug/spiele-und-puzzles/gesellschaftsspiele-und-co/pokemon-karten',
+  # Bekannte öffentliche Produktseite als stabile Discovery; die Kategorie bleibt als 404-Alternative.
+  'discovery': '/produkt/amigo-pokmon-sammelkartenspiel-top-trainer-box-30-jahre-0196214144842',
   'prospect_discoveries': [{'path': '/kinder/spielzeug/spiele-und-puzzles/gesellschaftsspiele-und-co/pokemon-karten'},
                            {'path': '/search?q=Pokemon%2030th%20Celebration'}],
   'product_urls': [
