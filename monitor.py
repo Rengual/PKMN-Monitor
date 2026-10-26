@@ -673,7 +673,24 @@ def _seller_allowed(shop, soup):
 
 
 def inspect_product(shop, url, link_title):
-    response, elapsed_ms = fetch(url, timeout=PRODUCT_TIMEOUTS.get(shop["id"], TIMEOUT))
+    try:
+        response, elapsed_ms = fetch(url, timeout=PRODUCT_TIMEOUTS.get(shop["id"], TIMEOUT))
+    except requests.HTTPError as exc:
+        # OTTO product URLs found in listings sometimes reject the trailing-slash
+        # variant with HTTP 400. Try the same public canonical path without the
+        # trailing slash once; this is URL normalization, not an access-control
+        # workaround. Never retry 403/429 or other access/rate-limit responses.
+        if (shop.get("id") == "otto" and exc.response is not None
+                and exc.response.status_code == 400 and urlparse(url).path.endswith("/")):
+            parsed = urlparse(url)
+            normalized_url = parsed._replace(path=parsed.path.rstrip("/")).geturl()
+            response, retry_ms = fetch(
+                normalized_url, timeout=PRODUCT_TIMEOUTS.get(shop["id"], TIMEOUT)
+            )
+            url = normalized_url
+            elapsed_ms = retry_ms
+        else:
+            raise
     soup = BeautifulSoup(response.text, "html.parser")
     title = _page_title(soup) or link_title
     page_text = " ".join(soup.stripped_strings)
