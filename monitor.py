@@ -44,6 +44,10 @@ PRODUCT_TIMEOUTS = {
 # Begrenzte Parallelität auf Shop- und Produktebene.
 MAX_SHOP_WORKERS = 8
 MAX_PRODUCT_WORKERS = 4
+# Bei Händlern mit wiederholten 400/403-Antworten nicht parallel anfragen.
+# Das reduziert Last und hält eine normale Sitzung pro Händler konsistent;
+# es umgeht keine Zugriffssperren.
+SERIAL_PRODUCT_SHOPS = {"otto", "saturn", "galaxus"}
 DISCOVERY_TIMEOUTS = {
     "comicattack": (3, 7),
     "bulkparadise": (4, 8),
@@ -827,6 +831,10 @@ def process_shop(shop, old_shop, known_urls):
         access_blocked_urls = []
         slow_product_requests = []
 
+        if shop["id"] in SERIAL_PRODUCT_SHOPS:
+            # Ein Händler, eine normale Session, ein Detailrequest zur Zeit.
+            discovery_session.headers["Referer"] = final_url
+
         def check_link(item):
             url, link_title = item
             # Klar ausgeschlossene Treffer benötigen keinen Detailabruf.
@@ -835,10 +843,13 @@ def process_shop(shop, old_shop, known_urls):
                 return url, None, 0, None
             request_started = time.monotonic()
             try:
-                product_session = requests.Session()
-                product_session.headers.update(HEADERS)
-                product_session.cookies.update(discovery_session.cookies)
-                product_session.headers["Referer"] = final_url
+                if shop["id"] in SERIAL_PRODUCT_SHOPS:
+                    product_session = discovery_session
+                else:
+                    product_session = requests.Session()
+                    product_session.headers.update(HEADERS)
+                    product_session.cookies.update(discovery_session.cookies)
+                    product_session.headers["Referer"] = final_url
                 product, elapsed = inspect_product(shop, url, link_title, session=product_session)
                 return url, product, elapsed, None
             except Exception as exc:
@@ -849,7 +860,8 @@ def process_shop(shop, old_shop, known_urls):
 
         # Alle gefundenen 30th-Kandidaten parallel prüfen. Die begrenzte
         # Workerzahl verhindert unkontrolliert viele Requests an einen Händler.
-        with ThreadPoolExecutor(max_workers=min(MAX_PRODUCT_WORKERS, max(1, len(links)))) as pool:
+        product_workers = 1 if shop["id"] in SERIAL_PRODUCT_SHOPS else MAX_PRODUCT_WORKERS
+        with ThreadPoolExecutor(max_workers=min(product_workers, max(1, len(links)))) as pool:
             futures = [pool.submit(check_link, item) for item in links.items()]
             for future in as_completed(futures):
                 url, product, elapsed, error = future.result()
