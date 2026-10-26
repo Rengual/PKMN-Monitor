@@ -22,7 +22,13 @@ from retailer_catalog import CORE_SHOPS, ALL_PROSPECTS
 
 STATUS_FILE = Path("status.json")
 HEALTH_FILE = Path("monitor_health.json")
-NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "").strip()
+NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "").strip().rstrip("/")
+if NTFY_TOPIC.startswith("https://ntfy.sh/"):
+    NTFY_TOPIC = NTFY_TOPIC.removeprefix("https://ntfy.sh/").strip("/")
+elif NTFY_TOPIC.startswith("http://ntfy.sh/"):
+    NTFY_TOPIC = NTFY_TOPIC.removeprefix("http://ntfy.sh/").strip("/")
+elif NTFY_TOPIC.startswith("ntfy.sh/"):
+    NTFY_TOPIC = NTFY_TOPIC.removeprefix("ntfy.sh/").strip("/")
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140.0 Safari/537.36",
     "Accept": "text/html,application/xhtml+xml",
