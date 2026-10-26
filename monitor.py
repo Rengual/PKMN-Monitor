@@ -115,7 +115,7 @@ def _looks_30th(text):
 
 def _looks_target(text):
     text = str(text or "").lower()
-    return bool(re.search(r"ultra[- ]?premium|\bupc\b|elite trainer box|\betb\b|top[- ]trainer[- ]box|pokemon center.*(?:etb|elite trainer)", text))
+    return bool(re.search(r"ultra[- ]?premium|\bupc\b|elite trainer box|\betb\b|top[- ]trainer[- ]box|pokemon center.*(?:etb|elite trainer)|\bbooster[ -]?bundle\b", text))
 
 
 def _product_heading(soup):
@@ -164,7 +164,7 @@ def discover(shop):
 
     current_title = _page_title(soup)
     current_context = f"{current_title} {response.url}"
-    if _looks_30th(current_context) and _looks_target(current_context):
+    if _looks_30th(current_context):
         found[_clean_url(response.url)] = current_title
 
     for a in soup.find_all("a", href=True):
@@ -174,7 +174,7 @@ def discover(shop):
         if host != base_host:
             continue
         context = _anchor_context(a, absolute)
-        if not _looks_30th(context) or not _looks_target(context):
+        if not _looks_30th(context):
             continue
         clean = _clean_url(absolute)
         title = " ".join(a.stripped_strings).strip() or a.get("aria-label", "") or a.get("title", "")
@@ -641,7 +641,7 @@ def inspect_product(shop, url, link_title):
     soup = BeautifulSoup(response.text, "html.parser")
     title = _page_title(soup) or link_title
     page_text = " ".join(soup.stripped_strings)
-    if not _looks_30th(f"{title} {url}") or not _looks_target(f"{title} {url}"):
+    if not _looks_30th(f"{title} {url}") and not product_catalog._has_30th_marker(title, url, page_text):
         return None, elapsed_ms
     primary_text = _primary_product_context(soup, title)
     if not product_catalog.candidate_allowed(title, url=url, page_text=primary_text):
