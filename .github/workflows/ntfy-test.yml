@@ -1,0 +1,27 @@
+name: ntfy Notification Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-notification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Send test notification
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          if [ -z "$NTFY_TOPIC" ]; then
+            echo "NTFY_TOPIC secret is missing or empty."
+            exit 1
+          fi
+          curl --fail --silent --show-error \
+            -H "Title: Pokémon Monitor – Test" \
+            -H "Priority: default" \
+            -d "Testnachricht: Die ntfy-Verbindung des Pokémon-Monitors funktioniert grundsätzlich." \
+            "https://ntfy.sh/${NTFY_TOPIC}"
+          echo "ntfy accepted the test notification."
