@@ -896,7 +896,8 @@ def process_shop(shop, old_shop, known_urls):
         for slow in status["slow_product_requests"]:
             print(f"[{shop['name']}] LANGSAME PRODUKTSEITE | {slow['duration_ms']/1000:.2f}s | {slow['url']}", flush=True)
         for error in product_errors:
-            print(f"[{shop['name']}] PRODUKTFEHLER | {error}", flush=True)
+            marker = "ZUGRIFF BLOCKIERT" if re.search(r"\b(?:403|429)\b", error) else "PRODUKTFEHLER"
+            print(f"[{shop['name']}] {marker} | {error}", flush=True)
         return products, status
     except Exception as exc:
         elapsed_ms = int((time.monotonic() - started) * 1000)
