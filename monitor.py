@@ -101,9 +101,13 @@ def save_status(status):
     STATUS_FILE.write_text(json.dumps(status, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
 
 
-def fetch(url, timeout=TIMEOUT):
+def fetch(url, timeout=TIMEOUT, session=None):
+    """Fetch directly, optionally preserving the retailer's normal session cookies."""
     started = time.monotonic()
-    response = requests.get(url, headers=HEADERS, timeout=timeout, allow_redirects=True)
+    if session is None:
+        response = requests.get(url, headers=HEADERS, timeout=timeout, allow_redirects=True)
+    else:
+        response = session.get(url, timeout=timeout, allow_redirects=True)
     elapsed_ms = int((time.monotonic() - started) * 1000)
     response.raise_for_status()
     if not response.text.strip():
@@ -162,7 +166,7 @@ def _anchor_context(a, absolute):
     return " ".join(str(part or "") for part in parts).strip()
 
 
-def discover(shop):
+def discover(shop, session=None):
     url = urljoin(shop["base"], shop["discovery"])
     response = None
     elapsed_ms = 0
@@ -183,6 +187,7 @@ def discover(shop):
             response, elapsed_ms = fetch(
                 candidate_url,
                 timeout=DISCOVERY_TIMEOUTS.get(shop["id"], TIMEOUT),
+                session=session,
             )
             url = candidate_url
             break
@@ -672,9 +677,9 @@ def _seller_allowed(shop, soup):
     return False
 
 
-def inspect_product(shop, url, link_title):
+def inspect_product(shop, url, link_title, session=None):
     try:
-        response, elapsed_ms = fetch(url, timeout=PRODUCT_TIMEOUTS.get(shop["id"], TIMEOUT))
+        response, elapsed_ms = fetch(url, timeout=PRODUCT_TIMEOUTS.get(shop["id"], TIMEOUT), session=session)
     except requests.HTTPError as exc:
         # OTTO product URLs found in listings sometimes reject the trailing-slash
         # variant with HTTP 400. Try the same public canonical path without the
@@ -685,7 +690,7 @@ def inspect_product(shop, url, link_title):
             parsed = urlparse(url)
             normalized_url = parsed._replace(path=parsed.path.rstrip("/")).geturl()
             response, retry_ms = fetch(
-                normalized_url, timeout=PRODUCT_TIMEOUTS.get(shop["id"], TIMEOUT)
+                normalized_url, timeout=PRODUCT_TIMEOUTS.get(shop["id"], TIMEOUT), session=session
             )
             url = normalized_url
             elapsed_ms = retry_ms
@@ -807,7 +812,11 @@ def process_shop(shop, old_shop, known_urls):
     started = time.monotonic()
     detail_ms = 0
     try:
-        links, http_status, discovery_ms, final_url = discover(shop)
+        # Reuse normal first-party cookies between discovery and product reads.
+        # This is ordinary session handling, not a proxy or access-control workaround.
+        discovery_session = requests.Session()
+        discovery_session.headers.update(HEADERS)
+        links, http_status, discovery_ms, final_url = discover(shop, session=discovery_session)
         for url in known_urls:
             if urlparse(url).netloc.lower().removeprefix("www.") == urlparse(shop["base"]).netloc.lower().removeprefix("www."):
                 links.setdefault(_clean_url(url), "")
@@ -815,6 +824,7 @@ def process_shop(shop, old_shop, known_urls):
         products = {}
         product_errors = []
         failed_product_urls = []
+        access_blocked_urls = []
         slow_product_requests = []
 
         def check_link(item):
@@ -825,7 +835,11 @@ def process_shop(shop, old_shop, known_urls):
                 return url, None, 0, None
             request_started = time.monotonic()
             try:
-                product, elapsed = inspect_product(shop, url, link_title)
+                product_session = requests.Session()
+                product_session.headers.update(HEADERS)
+                product_session.cookies.update(discovery_session.cookies)
+                product_session.headers["Referer"] = final_url
+                product, elapsed = inspect_product(shop, url, link_title, session=product_session)
                 return url, product, elapsed, None
             except Exception as exc:
                 # Auch fehlgeschlagene Requests zeitlich erfassen; bisher gingen
@@ -848,6 +862,9 @@ def process_shop(shop, old_shop, known_urls):
                 if error is not None:
                     product_errors.append(f"{url}: {error}")
                     failed_product_urls.append(url)
+                    response = getattr(error, "response", None)
+                    if response is not None and response.status_code in {403, 429}:
+                        access_blocked_urls.append(url)
                     continue
                 if product:
                     variants = product.pop("_variants", [])
@@ -862,6 +879,8 @@ def process_shop(shop, old_shop, known_urls):
             "discovery_ms": discovery_ms, "detail_ms": detail_ms,
             "duration_ms": elapsed_ms, "product_errors": product_errors,
             "failed_product_urls": failed_product_urls,
+            "access_blocked_urls": access_blocked_urls,
+            "access_blocked": bool(access_blocked_urls),
             "slow_product_requests": sorted(slow_product_requests, key=lambda item: item["duration_ms"], reverse=True)[:10],
             "discovery_ok": True,
         }
@@ -882,8 +901,12 @@ def process_shop(shop, old_shop, known_urls):
     except Exception as exc:
         elapsed_ms = int((time.monotonic() - started) * 1000)
         failures = int((old_shop or {}).get("failures", 0)) + 1
+        response = getattr(exc, "response", None)
+        access_blocked = response is not None and response.status_code in {403, 429}
         status = {
             "name": shop["name"], "ok": False, "failures": failures,
+            "access_blocked": access_blocked,
+            "http_status": response.status_code if response is not None else None,
             "last_error": str(exc), "last_failure": int(time.time()),
             "product_count": int((old_shop or {}).get("product_count", 0)),
             "duration_ms": elapsed_ms,
@@ -891,7 +914,8 @@ def process_shop(shop, old_shop, known_urls):
         }
         if (old_shop or {}).get("last_success"):
             status["last_success"] = old_shop["last_success"]
-        print(f"[{shop['name']}] FEHLER | {exc} | {elapsed_ms/1000:.2f}s", flush=True)
+        marker = "ZUGRIFF BLOCKIERT" if access_blocked else "FEHLER"
+        print(f"[{shop['name']}] {marker} | {exc} | {elapsed_ms/1000:.2f}s", flush=True)
         return {}, status
 
 
