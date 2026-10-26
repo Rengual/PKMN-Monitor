@@ -35,6 +35,12 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9,de;q=0.7",
 }
 TIMEOUT = (5, 15)
+# Nur für wiederholt langsame Shops längere Lese-Timeouts; keine pauschale
+# Verlängerung, damit ein einzelner Händler den gesamten Lauf nicht ausbremst.
+PRODUCT_TIMEOUTS = {
+    "lotticards": (5, 8),
+    "goblinsgnomes": (5, 20),
+}
 # Begrenzte Parallelität auf Shop- und Produktebene.
 MAX_SHOP_WORKERS = 8
 MAX_PRODUCT_WORKERS = 4
@@ -42,6 +48,8 @@ DISCOVERY_TIMEOUTS = {
     "comicattack": (3, 7),
     "bulkparadise": (4, 8),
     "gamesisland": (3, 5),
+    "lotticards": (5, 8),
+    "goblinsgnomes": (5, 20),
 }
 DETECTION_VERSION = 5
 
@@ -157,7 +165,36 @@ def _anchor_context(a, absolute):
 
 def discover(shop):
     url = urljoin(shop["base"], shop["discovery"])
-    response, elapsed_ms = fetch(url, timeout=DISCOVERY_TIMEOUTS.get(shop["id"], TIMEOUT))
+    response = None
+    elapsed_ms = 0
+    tried_urls = []
+    # Ein 404 auf einer Kategorie kann durch einen veralteten Kategoriepfad
+    # entstehen. Dann genau eine normale, im Katalog hinterlegte alternative
+    # Such-/Kategorie-URL testen. 403/400 werden NICHT umgangen oder wiederholt.
+    candidates = [url]
+    for candidate in shop.get("prospect_discoveries", ()):
+        path = candidate.get("path") if isinstance(candidate, dict) else candidate
+        if path:
+            alternative = urljoin(shop["base"], path)
+            if alternative not in candidates:
+                candidates.append(alternative)
+    for candidate_url in candidates:
+        tried_urls.append(candidate_url)
+        try:
+            response, elapsed_ms = fetch(
+                candidate_url,
+                timeout=DISCOVERY_TIMEOUTS.get(shop["id"], TIMEOUT),
+            )
+            url = candidate_url
+            break
+        except requests.HTTPError as exc:
+            if exc.response is None or exc.response.status_code != 404:
+                raise
+            if candidate_url == candidates[-1]:
+                raise
+            print(f"[{shop['name']}] DISCOVERY 404 | teste reguläre Alternativ-URL", flush=True)
+    if response is None:
+        raise RuntimeError("discovery failed without a response")
     soup = BeautifulSoup(response.text, "html.parser")
     found = {}
     base_host = urlparse(shop["base"]).netloc.lower().removeprefix("www.")
@@ -637,7 +674,7 @@ def _seller_allowed(shop, soup):
 
 
 def inspect_product(shop, url, link_title):
-    response, elapsed_ms = fetch(url)
+    response, elapsed_ms = fetch(url, timeout=PRODUCT_TIMEOUTS.get(shop["id"], TIMEOUT))
     soup = BeautifulSoup(response.text, "html.parser")
     title = _page_title(soup) or link_title
     page_text = " ".join(soup.stripped_strings)
@@ -762,6 +799,7 @@ def process_shop(shop, old_shop, known_urls):
         products = {}
         product_errors = []
         failed_product_urls = []
+        slow_product_requests = []
 
         def check_link(item):
             url, link_title = item
@@ -769,11 +807,15 @@ def process_shop(shop, old_shop, known_urls):
             if (link_title and _looks_30th(link_title) and _looks_target(link_title)
                     and not product_catalog.candidate_allowed(link_title, url=url)):
                 return url, None, 0, None
+            request_started = time.monotonic()
             try:
                 product, elapsed = inspect_product(shop, url, link_title)
                 return url, product, elapsed, None
             except Exception as exc:
-                return url, None, 0, exc
+                # Auch fehlgeschlagene Requests zeitlich erfassen; bisher gingen
+                # deren Laufzeiten in detail_ms verloren.
+                elapsed = int((time.monotonic() - request_started) * 1000)
+                return url, None, elapsed, exc
 
         # Alle gefundenen 30th-Kandidaten parallel prüfen. Die begrenzte
         # Workerzahl verhindert unkontrolliert viele Requests an einen Händler.
@@ -782,6 +824,11 @@ def process_shop(shop, old_shop, known_urls):
             for future in as_completed(futures):
                 url, product, elapsed, error = future.result()
                 detail_ms += elapsed
+                if elapsed >= 3000:
+                    slow_product_requests.append({
+                        "url": url, "duration_ms": elapsed,
+                        "error": str(error) if error is not None else "",
+                    })
                 if error is not None:
                     product_errors.append(f"{url}: {error}")
                     failed_product_urls.append(url)
@@ -799,6 +846,7 @@ def process_shop(shop, old_shop, known_urls):
             "discovery_ms": discovery_ms, "detail_ms": detail_ms,
             "duration_ms": elapsed_ms, "product_errors": product_errors,
             "failed_product_urls": failed_product_urls,
+            "slow_product_requests": sorted(slow_product_requests, key=lambda item: item["duration_ms"], reverse=True)[:10],
             "discovery_ok": True,
         }
         if product_errors:
@@ -810,6 +858,8 @@ def process_shop(shop, old_shop, known_urls):
             status["last_success"] = int(time.time())
         label = "FEHLER" if product_errors else "OK"
         print(f"[{shop['name']}] {label} HTTP {http_status} | links={len(links)} products={len(products)} errors={len(product_errors)} | {elapsed_ms/1000:.2f}s", flush=True)
+        for slow in status["slow_product_requests"]:
+            print(f"[{shop['name']}] LANGSAME PRODUKTSEITE | {slow['duration_ms']/1000:.2f}s | {slow['url']}", flush=True)
         for error in product_errors:
             print(f"[{shop['name']}] PRODUKTFEHLER | {error}", flush=True)
         return products, status
