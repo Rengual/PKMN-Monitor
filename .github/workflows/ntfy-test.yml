@@ -19,9 +19,25 @@ jobs:
             echo "NTFY_TOPIC secret is missing or empty."
             exit 1
           fi
-          curl --fail --silent --show-error \
+
+          # Accept either a bare topic or the full ntfy.sh URL in the secret.
+          TOPIC="$(printf '%s' "$NTFY_TOPIC" | sed -E 's#^https?://ntfy\.sh/##; s#^ntfy\.sh/##; s#/*$##')"
+          if [ -z "$TOPIC" ] || printf '%s' "$TOPIC" | grep -q '/'; then
+            echo "NTFY_TOPIC is not a valid bare topic name or ntfy.sh topic URL."
+            exit 1
+          fi
+
+          echo "Sending test notification (topic value is not displayed)."
+          RESPONSE="$(curl --silent --show-error --write-out '\nHTTP_STATUS:%{http_code}' \
             -H "Title: Pokémon Monitor – Test" \
             -H "Priority: default" \
             -d "Testnachricht: Die ntfy-Verbindung des Pokémon-Monitors funktioniert grundsätzlich." \
-            "https://ntfy.sh/${NTFY_TOPIC}"
+            "https://ntfy.sh/${TOPIC}")"
+          STATUS="$(printf '%s' "$RESPONSE" | sed -n 's/^HTTP_STATUS://p')"
+          BODY="$(printf '%s' "$RESPONSE" | sed '/^HTTP_STATUS:/d')"
+          echo "ntfy response: $BODY"
+          echo "HTTP status: $STATUS"
+          if [ "$STATUS" -lt 200 ] || [ "$STATUS" -ge 300 ]; then
+            exit 1
+          fi
           echo "ntfy accepted the test notification."
