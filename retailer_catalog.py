@@ -892,7 +892,7 @@ ALL_PROSPECTS = [{'id': 'rossmann',
  {'id': 'galeria',
   'name': 'GALERIA',
   'base': 'https://www.galeria.de',
-  # Bekannte öffentliche Produktseite als stabile Discovery; die Kategorie bleibt als 404-Alternative.
+  # Öffentliche Spielwaren-Kategorie; die Suchseite bleibt als reguläre Alternative.
   'discovery': '/kinder/spielzeug/spiele-und-puzzles/gesellschaftsspiele-und-co',
   'prospect_discoveries': [{'path': '/kinder/spielzeug/spiele-und-puzzles/gesellschaftsspiele-und-co'},
                            {'path': '/search?q=Pokemon%2030th%20Celebration'}],
