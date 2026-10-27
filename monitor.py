@@ -710,8 +710,23 @@ def inspect_product(shop, url, link_title, session=None):
         return None, elapsed_ms
     if not _seller_allowed(shop, soup):
         return None, elapsed_ms
-    price, currency = _extract_price(soup, response.text, page_text, primary_text)
-    currency = currency or shop.get("currency", "")
+    if shop["id"] == "danihagebeuk":
+        # The storefront's visible price is in EUR, but its structured metadata
+        # can expose a USD amount. For this shop, trust only a price explicitly
+        # paired with the euro symbol in the primary product area. If no such
+        # value is visible, suppress the price rather than emit a false change.
+        euro_match = re.search(
+            r"(?:€\s*([0-9][0-9 .,'’]*[0-9])|([0-9][0-9 .,'’]*[0-9])\s*€)",
+            primary_text,
+        )
+        if euro_match:
+            visible_euro_price = _normalize_price(euro_match.group(1) or euro_match.group(2))
+            price, currency = (visible_euro_price, "EUR") if visible_euro_price else ("", "EUR")
+        else:
+            price, currency = "", "EUR"
+    else:
+        price, currency = _extract_price(soup, response.text, page_text, primary_text)
+        currency = currency or shop.get("currency", "")
     if not price and shop.get("currency") in {"DKK", "SEK", "NOK"}:
         # Nordic price displays often use "799,-" or "999 kr" without a symbol.
         match = re.search(r"\b(\d{2,5}(?:[ .]\d{3})*)\s*(?:kr\b|,-|:-)", primary_text, re.I)
