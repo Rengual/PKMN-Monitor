@@ -769,6 +769,20 @@ def _comparable_price(value):
     return normalized or str(value or "").strip()
 
 
+def _material_price_change(old_price, new_price):
+    """Ignore tiny price jitter caused by dynamic currency/market formatting."""
+    try:
+        old_value = float(_comparable_price(old_price))
+        new_value = float(_comparable_price(new_price))
+    except (TypeError, ValueError):
+        return _comparable_price(old_price) != _comparable_price(new_price)
+    if old_value <= 0:
+        return old_value != new_value
+    # Require at least 2 currency units and 1% of the old price.
+    # Example: an MXN 8 fluctuation on an MXN 11,366 item is not meaningful.
+    return abs(new_value - old_value) >= max(2.0, abs(old_value) * 0.01)
+
+
 def _price_label(product, price):
     currency = _normalize_currency(product.get("currency")) or ""
     return f"{price} {currency}".strip()
@@ -799,7 +813,8 @@ def notify_changes(old_products, current_products):
 
             if new_price and new_price != old_price:
                 if old_price:
-                    changes.append(f"Preis: {_price_label(old, old_price)} -> {_price_label(product, new_price)}")
+                    if _material_price_change(old_price, new_price):
+                        changes.append(f"Preis: {_price_label(old, old_price)} -> {_price_label(product, new_price)}")
                 else:
                     changes.append(f"Preis entdeckt: {_price_label(product, new_price)}")
 
@@ -1001,6 +1016,21 @@ def main():
             new_products.update(
                 merge_shop_products(shop["id"], old_products, products, shop_status)
             )
+
+    # A successful page read can still omit its price intermittently (for example,
+    # when a currency symbol is absent from the rendered product context). Keep
+    # the last known price for comparison and mark it stale instead of repeatedly
+    # clearing it and sending "Preis entdeckt" alerts on the next successful parse.
+    for url, product in new_products.items():
+        if not isinstance(product, dict):
+            continue
+        previous = old_products.get(url)
+        if not product.get("price") and isinstance(previous, dict) and previous.get("price"):
+            product["price"] = previous["price"]
+            product["currency"] = previous.get("currency") or product.get("currency", "")
+            product["price_stale"] = True
+        elif product.get("price"):
+            product.pop("price_stale", None)
 
     pack_quantity_hints = {
         url: int(product.get("pack_quantity", 0) or 0)
