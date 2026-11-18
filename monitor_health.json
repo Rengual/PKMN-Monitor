@@ -2,10 +2,10 @@
   "health": "DEGRADED",
   "mode": "baseline",
   "total_shops": 169,
-  "successful_shops": 148,
-  "failed_shops": 21,
+  "successful_shops": 65,
+  "failed_shops": 104,
   "products": 140,
-  "duration_ms": 105049,
+  "duration_ms": 52172,
   "quality": {
     "listings": 140,
     "states": {
@@ -38,14 +38,174 @@
       "error": "403 Client Error: Forbidden for url: https://www.spellenhuis.nl/trading-cards/pokemon/"
     },
     {
-      "id": "lichcards",
-      "name": "Lichcards",
-      "error": "1/20 Produktseiten fehlgeschlagen: https://lichcards.nl/en/products/pokemon-tcg-30th-celebration-booster-bundle-english: 404 Client Error: Not Found for url: https://lichcards.nl/en/products/pokemon-tcg-30th-celebration-booster-bundle-english"
+      "id": "rubygator",
+      "name": "RubyGator",
+      "error": "13/13 Produktseiten fehlgeschlagen: https://rubygator.nl/search: 429 Client Error: Too Many Requests for url: https://rubygator.nl/search; https://rubygator.nl/products/30th-celebration-ultra-premium-collection-day: 429 Client Error: Too Many Requests for url: https://rubygator.nl/products/30th-celebration-ultra-premium-collection-day; https://rubygator.nl/collections/pokemon-30th-celebration: 429 Client Error: Too Many Requests for url: https://rubygator.nl/collections/pokemon-30th-celebration; https://rubygator.nl/products/30th-celebration-booster-bundle: 429 Client Error: Too Many Requests for url: https://rubygator.nl/products/30th-celebration-booster-bundle; https://rubygator.nl/products/30th-celebration-ultra-premium-collection-night: 429 Client Error: Too Many Requests for url: https://rubygator.nl/products/30th-celebration-ultra-premium-collection-night; https://rubygator.nl/products/30th-celebration-tech-sticker-collection-lucario: 429 Client Error: Too Many Requests for url: https://rubygator.nl/products/30th-celebration-tech-sticker-collection-lucario; https://rubygator.nl/products/30th-celebration-figure-collection-mew: 429 Client Error: Too Many Requests for url: https://rubygator.nl/products/30th-celebration-figure-collection-mew; https://rubygator.nl/products/30th-celebration-figure-collection-mewtwo: 429 Client Error: Too Many Requests for url: https://rubygator.nl/products/30th-celebration-figure-collection-mewtwo; https://rubygator.nl/products/30th-celebration-elite-trainer-box: 429 Client Error: Too Many Requests for url: https://rubygator.nl/products/30th-celebration-elite-trainer-box; https://rubygator.nl/products/30th-celebration-pokemon-center-elite-trainer-box: 429 Client Error: Too Many Requests for url: https://rubygator.nl/products/30th-celebration-pokemon-center-elite-trainer-box; https://rubygator.nl/products/30th-celebration-mini-tin-display: 429 Client Error: Too Many Requests for url: https://rubygator.nl/products/30th-celebration-mini-tin-display; https://rubygator.nl/products/30th-celebration-greninja-ex-box: 429 Client Error: Too Many Requests for url: https://rubygator.nl/products/30th-celebration-greninja-ex-box; https://rubygator.nl/products/30th-celebration-2-pack-blister-eevee: 429 Client Error: Too Many Requests for url: https://rubygator.nl/products/30th-celebration-2-pack-blister-eevee"
     },
     {
-      "id": "sapphirecards",
-      "name": "Sapphire-Cards",
-      "error": "429 Client Error: Too Many Requests for url: https://sapphire-cards.de/pokemon/booster/"
+      "id": "collgamers",
+      "name": "CollGamers",
+      "error": "429 Client Error: Too Many Requests for url: https://collgamers.nl/en"
+    },
+    {
+      "id": "lichcards",
+      "name": "Lichcards",
+      "error": "5/20 Produktseiten fehlgeschlagen: https://lichcards.nl/en/products/mew-ex-30th-celebration-jp-secret-rare-135-907900: 429 Client Error: Too Many Requests for url: https://lichcards.nl/en/products/mew-ex-30th-celebration-jp-secret-rare-135-907900; https://lichcards.nl/en/products/mew-30th-celebration-jp-fixed-056-907820: 429 Client Error: Too Many Requests for url: https://lichcards.nl/en/products/mew-30th-celebration-jp-fixed-056-907820; https://lichcards.nl/en/blogs/lichcards/pokemon-30th-celebration-pre-order: 429 Client Error: Too Many Requests for url: https://lichcards.nl/en/blogs/lichcards/pokemon-30th-celebration-pre-order; https://lichcards.nl/en/products/pokemon-tcg-30th-celebration-booster-bundle-english: 429 Client Error: Too Many Requests for url: https://lichcards.nl/en/products/pokemon-tcg-30th-celebration-booster-bundle-english; https://lichcards.nl/en/products/pokemon-tcg-30th-celebration-ultra-premium-collection-night-umbreon-ex-english: 429 Client Error: Too Many Requests for url: https://lichcards.nl/en/products/pokemon-tcg-30th-celebration-ultra-premium-collection-night-umbreon-ex-english"
+    },
+    {
+      "id": "geeksheaven",
+      "name": "GeeksHeaven",
+      "error": "18/26 Produktseiten fehlgeschlagen: https://geeksheaven.de/products/pokemon-30th-celebration-booster-bundle-englisch-vorbestellung: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-30th-celebration-booster-bundle-englisch-vorbestellung; https://geeksheaven.de/products/pokemon-30th-celebration-figure-collection-mew-englisch-vorbestellung: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-30th-celebration-figure-collection-mew-englisch-vorbestellung; https://geeksheaven.de/products/pokemon-30th-celebration-figure-collection-mewtwo-englisch-vorbestellung: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-30th-celebration-figure-collection-mewtwo-englisch-vorbestellung; https://geeksheaven.de/products/pokemon-center-deck-shield-30th-celebration-premium-gloss-64-sleeves: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-center-deck-shield-30th-celebration-premium-gloss-64-sleeves; https://geeksheaven.de/products/pokemon-30th-celebration-battle-deck-espeon-ex-englisch-vorbestellung: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-30th-celebration-battle-deck-espeon-ex-englisch-vorbestellung; https://geeksheaven.de/products/pokemon-30th-celebration-sylveon-ex-box-englisch-vorbestellung: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-30th-celebration-sylveon-ex-box-englisch-vorbestellung; https://geeksheaven.de/products/pokemon-30th-anniversary-booster-display-chinesisch: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-30th-anniversary-booster-display-chinesisch; https://geeksheaven.de/products/pokemon-30th-celebration-poster-collection-englisch-vorbestellung: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-30th-celebration-poster-collection-englisch-vorbestellung; https://geeksheaven.de/products/pokemon-30th-celebration-tin-1-day-sylveon-ex-englisch-vorbestellung: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-30th-celebration-tin-1-day-sylveon-ex-englisch-vorbestellung; https://geeksheaven.de/products/pokemon-30th-celebration-2-pack-blister-eevee-englisch-vorbestellung: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-30th-celebration-2-pack-blister-eevee-englisch-vorbestellung; https://geeksheaven.de/products/pokemon-30th-celebration-ditto-premium-collection-englisch-vorbestellung: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-30th-celebration-ditto-premium-collection-englisch-vorbestellung; https://geeksheaven.de/products/pokemon-30th-celebration-tin-2-night-greninja-ex-englisch-vorbestellung: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-30th-celebration-tin-2-night-greninja-ex-englisch-vorbestellung; https://geeksheaven.de/products/pokemon-30th-celebration-starter-promokarten-komplett-set-101-127-m-p-japanisch-alle-27-holo-promokarten: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-30th-celebration-starter-promokarten-komplett-set-101-127-m-p-japanisch-alle-27-holo-promokarten; https://geeksheaven.de/products/pokemon-30th-celebration-mini-tin-englisch-sortiert-vorbestellung: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-30th-celebration-mini-tin-englisch-sortiert-vorbestellung; https://geeksheaven.de/products/pokemon-center-deck-case-30th-celebration: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-center-deck-case-30th-celebration; https://geeksheaven.de/products/pokemon-30-jahre-figuren-kollektion-mew-deutsch: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-30-jahre-figuren-kollektion-mew-deutsch; https://geeksheaven.de/products/pokemon-30th-celebration-ultra-premium-collection-day-pikachu-ex-espeon-ex-englisch-vorbestellung: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-30th-celebration-ultra-premium-collection-day-pikachu-ex-espeon-ex-englisch-vorbestellung; https://geeksheaven.de/products/pokemon-30th-celebration-greninja-ex-box-englisch-vorbestellung: 429 Client Error: Too Many Requests for url: https://geeksheaven.de/products/pokemon-30th-celebration-greninja-ex-box-englisch-vorbestellung"
+    },
+    {
+      "id": "pokemonplug",
+      "name": "Pokemon Plug",
+      "error": "429 Client Error: Too Many Requests for url: https://pokemonplug.com/collections/30th-anniversary"
+    },
+    {
+      "id": "danihagebeuk",
+      "name": "DaniHagebeukTCG",
+      "error": "15/15 Produktseiten fehlgeschlagen: https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-elite-trainer-box-english: 429 Client Error: Too Many Requests for url: https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-elite-trainer-box-english; https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-night-ultra-premium-collection-english: 429 Client Error: Too Many Requests for url: https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-night-ultra-premium-collection-english; https://danihagebeuktcg.nl/en/search: 429 Client Error: Too Many Requests for url: https://danihagebeuktcg.nl/en/search; https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-day-ultra-premium-collection-english: 429 Client Error: Too Many Requests for url: https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-day-ultra-premium-collection-english; https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-greninja-ex-box-english: 429 Client Error: Too Many Requests for url: https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-greninja-ex-box-english; https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-poster-collection-english: 429 Client Error: Too Many Requests for url: https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-poster-collection-english; https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-sylveon-ex-tin-english: 429 Client Error: Too Many Requests for url: https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-sylveon-ex-tin-english; https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-sylveon-ex-box-english: 429 Client Error: Too Many Requests for url: https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-sylveon-ex-box-english; https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-greninja-ex-tin-english: 429 Client Error: Too Many Requests for url: https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-greninja-ex-tin-english; https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-eevee-2-pack-blister-english: 429 Client Error: Too Many Requests for url: https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-eevee-2-pack-blister-english; https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-lucario-tech-sticker-collection-english: 429 Client Error: Too Many Requests for url: https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-lucario-tech-sticker-collection-english; https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-anniversary-celebration-booster-box-traditional-chinese: 429 Client Error: Too Many Requests for url: https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-anniversary-celebration-booster-box-traditional-chinese; https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-booster-bundle-english: 429 Client Error: Too Many Requests for url: https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-booster-bundle-english; https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-alolan-exeggutor-tech-sticker-collection-english: 429 Client Error: Too Many Requests for url: https://danihagebeuktcg.nl/en/products/pokemon-tcg-30th-celebration-alolan-exeggutor-tech-sticker-collection-english; https://danihagebeuktcg.nl/en/products/pokemon-tcg-pokemon-day-2026-30th-anniversary-collection-box-english: 429 Client Error: Too Many Requests for url: https://danihagebeuktcg.nl/en/products/pokemon-tcg-pokemon-day-2026-30th-anniversary-collection-box-english"
+    },
+    {
+      "id": "breakthecase",
+      "name": "BreakTheCase",
+      "error": "429 Client Error: Too Many Requests for url: https://www.breakthecase.de/collections/pokemon"
+    },
+    {
+      "id": "crispycards",
+      "name": "CrispyCards",
+      "error": "429 Client Error: Too Many Requests for url: https://crispycards.de/collections/pokemon-tcg-englisch"
+    },
+    {
+      "id": "battlebear",
+      "name": "Battle Bear",
+      "error": "429 Client Error: Too Many Requests for url: https://www.battle-bear.de/collections/pokemon"
+    },
+    {
+      "id": "fantasiacards",
+      "name": "FantasiaCards",
+      "error": "429 Client Error: Too Many Requests for url: https://fantasiacards.de/collections/pokemon-englisch"
+    },
+    {
+      "id": "kofuku",
+      "name": "Kofuku",
+      "error": "429 Client Error: Too Many Requests for url: https://kofuku.de/collections/pokemon-karten"
+    },
+    {
+      "id": "adventurecardz",
+      "name": "AdventureCardz",
+      "error": "429 Client Error: Too Many Requests for url: https://adventurecardz.de/collections/pokemon-alle"
+    },
+    {
+      "id": "escamon",
+      "name": "Escamon",
+      "error": "429 Client Error: Too Many Requests for url: https://www.escamon.de/en/collections/pokemon-top-trainer-box-elite-trainer-box"
+    },
+    {
+      "id": "balucards",
+      "name": "Balucards",
+      "error": "429 Client Error: Too Many Requests for url: https://balucards.de/collections/alle-produkte"
+    },
+    {
+      "id": "imperialcards",
+      "name": "ImperialCards",
+      "error": "429 Client Error: Too Many Requests for url: https://imperialcards.de/collections/all"
+    },
+    {
+      "id": "karacardz",
+      "name": "KaraCardz",
+      "error": "429 Client Error: Too Many Requests for url: https://karacardz.com/collections/displays-sealed"
+    },
+    {
+      "id": "twosleeve",
+      "name": "2Sleeve",
+      "error": "429 Client Error: Too Many Requests for url: https://www.2sleeve.de/collections/displays-deutsch/englisch"
+    },
+    {
+      "id": "gemcards",
+      "name": "Gem Cards",
+      "error": "429 Client Error: Too Many Requests for url: https://gemcards.de/collections/pokemon"
+    },
+    {
+      "id": "celestialgameshop",
+      "name": "Celestial GameShop",
+      "error": "429 Client Error: Too Many Requests for url: https://www.celestial-gameshop.de/en/collections/pokemon-de"
+    },
+    {
+      "id": "novicgames",
+      "name": "Novic Games",
+      "error": "429 Client Error: Too Many Requests for url: https://novic-games.com/collections/all"
+    },
+    {
+      "id": "varietycards",
+      "name": "Variety Cards",
+      "error": "429 Client Error: Too Many Requests for url: https://variety-cards.de/collections/displays"
+    },
+    {
+      "id": "brofessoreich",
+      "name": "Brofessor Eich",
+      "error": "429 Client Error: Too Many Requests for url: https://brofessoreich.de/"
+    },
+    {
+      "id": "pokemontcgshop",
+      "name": "pokemon-tcg-shop",
+      "error": "429 Client Error: Too Many Requests for url: https://www.pokemon-tcg-shop.de/en/collections/all"
+    },
+    {
+      "id": "pokelumina",
+      "name": "PokeLumina",
+      "error": "429 Client Error: Too Many Requests for url: https://www.pokelumina.de/collections/pokemon"
+    },
+    {
+      "id": "deichcards",
+      "name": "Deichcards",
+      "error": "429 Client Error: Too Many Requests for url: https://deichcards.de/collections/pokemon-sammelkarten"
+    },
+    {
+      "id": "mucollectibles",
+      "name": "MUCollectibles",
+      "error": "429 Client Error: Too Many Requests for url: https://www.mucollectibles.de/collections/pokemon-displays"
+    },
+    {
+      "id": "battleofcards",
+      "name": "BattleofCards",
+      "error": "429 Client Error: Too Many Requests for url: https://www.battleofcards.de/collections/pokemon-karten-englisch"
+    },
+    {
+      "id": "fancycards24",
+      "name": "FancyCards24",
+      "error": "429 Client Error: Too Many Requests for url: https://fancycards24.com/collections/pokemon-englisch"
+    },
+    {
+      "id": "toytreasure",
+      "name": "Toy Treasure",
+      "error": "429 Client Error: Too Many Requests for url: https://toy-treasure.com/collections/englisch"
+    },
+    {
+      "id": "rocketcardstore",
+      "name": "Rocket Card Store",
+      "error": "429 Client Error: Too Many Requests for url: https://www.rocketcardstore.de/collections/pokemon-englisch"
+    },
+    {
+      "id": "moonshadow",
+      "name": "Moon-Shadow",
+      "error": "429 Client Error: Too Many Requests for url: https://moon-shadow.de/collections/pokemon"
+    },
+    {
+      "id": "kantokiosk",
+      "name": "Kanto Kiosk",
+      "error": "429 Client Error: Too Many Requests for url: https://kantokiosk.de/collections/booster"
+    },
+    {
+      "id": "tradingtoys",
+      "name": "TradingToys / Wensing Spielwaren",
+      "error": "429 Client Error: Too Many Requests for url: https://www.tradingtoys.de/collections/pokemon-30-jahre-tcg"
+    },
+    {
+      "id": "hartfelder",
+      "name": "Hartfelder Spielzeug",
+      "error": "429 Client Error: Too Many Requests for url: https://hartfelder.com/search?q=30th&type=product"
     },
     {
       "id": "duoshop",
@@ -53,9 +213,49 @@
       "error": "403 Client Error: Forbidden for url: https://www.duo-shop.de/produkte/spielzeug/sammelkarten/"
     },
     {
+      "id": "starzcollectibles",
+      "name": "Starz Collectibles",
+      "error": "429 Client Error: Too Many Requests for url: https://starzcollectibles.de/collections/pokemon"
+    },
+    {
+      "id": "peeronline",
+      "name": "Peer's Online-Shop",
+      "error": "429 Client Error: Too Many Requests for url: https://www.peer-online.de/en/collections/pokemon-booster"
+    },
+    {
+      "id": "lakecards",
+      "name": "LakeCards",
+      "error": "429 Client Error: Too Many Requests for url: https://lakecards.de/en/pages/pokemon-kolletkion"
+    },
+    {
+      "id": "pokestop",
+      "name": "PokeStop",
+      "error": "429 Client Error: Too Many Requests for url: https://poke-stop.eu/"
+    },
+    {
+      "id": "pokebrixx",
+      "name": "Poke Brixx",
+      "error": "429 Client Error: Too Many Requests for url: https://pokebrixx.de/collections/pokemon"
+    },
+    {
       "id": "saturn",
       "name": "SATURN",
       "error": "1/1 Produktseiten fehlgeschlagen: https://www.saturn.de/de/product/_pokemon-30th-anniversary-coin-set-chinese-sammelkarten-188828872.html: 403 Client Error: Forbidden for url: https://www.saturn.de/de/product/_pokemon-30th-anniversary-coin-set-chinese-sammelkarten-188828872.html"
+    },
+    {
+      "id": "pruckiscards",
+      "name": "Prueckis Cards",
+      "error": "429 Client Error: Too Many Requests for url: https://pruckis.de/search?q=30th&type=product"
+    },
+    {
+      "id": "yonkotcg",
+      "name": "YONKO TCG",
+      "error": "429 Client Error: Too Many Requests for url: https://yonko-tcg.de/collections/pokemon-pre-order"
+    },
+    {
+      "id": "ccncards",
+      "name": "CCN Cards",
+      "error": "429 Client Error: Too Many Requests for url: https://www.ccncards.de/pages/pokemon"
     },
     {
       "id": "nettoonline",
@@ -68,9 +268,29 @@
       "error": "403 Client Error: Forbidden for url: https://www.kaufland.de/product/573179383/"
     },
     {
-      "id": "keepseven",
-      "name": "KEEPSEVEN",
-      "error": "1/1 Produktseiten fehlgeschlagen: https://keepseven.de/product-category/expansions-pokemon/30-jahre-30th-celebration-expansions-pokemon/: 429 Client Error: Too Many Requests for url: https://keepseven.de/product-category/expansions-pokemon/30-jahre-30th-celebration-expansions-pokemon/"
+      "id": "sapphirecards",
+      "name": "Sapphire-Cards",
+      "error": "3/5 Produktseiten fehlgeschlagen: https://sapphire-cards.de/produkt/pokemon-30-jahre-30th-celebration-booster-2/: 429 Client Error: Too Many Requests for url: https://sapphire-cards.de/produkt/pokemon-30-jahre-30th-celebration-booster-2/; https://sapphire-cards.de/./pokemon/pokemon-30-jahre-30th-celebration-set/: 429 Client Error: Too Many Requests for url: https://sapphire-cards.de/pokemon/pokemon-30-jahre-30th-celebration-set/; https://sapphire-cards.de/produkt/pokemon-30-jahre-30th-celebration-booster-bundle/: 429 Client Error: Too Many Requests for url: https://sapphire-cards.de/produkt/pokemon-30-jahre-30th-celebration-booster-bundle/"
+    },
+    {
+      "id": "pokeprinz",
+      "name": "PokéPrinz",
+      "error": "429 Client Error: Too Many Requests for url: https://pokeprinz.de/en/collections/englisch"
+    },
+    {
+      "id": "akashicards",
+      "name": "Akashi Cards",
+      "error": "429 Client Error: Too Many Requests for url: https://akashicards.de/collections/pokemon-en"
+    },
+    {
+      "id": "kleineskarussell",
+      "name": "Kleines Karussell",
+      "error": "429 Client Error: Too Many Requests for url: https://www.kleineskarussell.de/collections/pokemon"
+    },
+    {
+      "id": "bayoupokefamily",
+      "name": "BayouPokeFamily",
+      "error": "429 Client Error: Too Many Requests for url: https://bayoupokefamily.com/collections/englisch"
     },
     {
       "id": "krakencards",
@@ -78,9 +298,34 @@
       "error": "403 Client Error: Forbidden for url: https://krakencards.eu/de/products"
     },
     {
-      "id": "pokeroom",
-      "name": "Pokeroom",
-      "error": "1/3 Produktseiten fehlgeschlagen: https://pokeroom.shop/product/30th-celebration-ultra-premium-collection-en/: 404 Client Error: Not Found for url: https://pokeroom.shop/product/30th-celebration-ultra-premium-collection-en/"
+      "id": "sealedcardzz",
+      "name": "SealedCardzz",
+      "error": "429 Client Error: Too Many Requests for url: https://sealedcardzz.com/collections/pokemon-elite-trainer-boxen"
+    },
+    {
+      "id": "kingbreaktcg",
+      "name": "KingBreakTCG",
+      "error": "429 Client Error: Too Many Requests for url: https://kingbreaktcg.com/collections/pokemon-displays-eng"
+    },
+    {
+      "id": "mentastore",
+      "name": "Mentastore",
+      "error": "429 Client Error: Too Many Requests for url: https://www.mentastore.com/de/search?q=30th"
+    },
+    {
+      "id": "pokeuri",
+      "name": "PokéUri",
+      "error": "429 Client Error: Too Many Requests for url: https://pokeuri.ch/collections/pre-order"
+    },
+    {
+      "id": "pokecado",
+      "name": "Pokécado",
+      "error": "429 Client Error: Too Many Requests for url: https://www.pokecado.ch/collections/30th-celebration-kollektion-pokemon-tcg"
+    },
+    {
+      "id": "marogames",
+      "name": "MaRo Games",
+      "error": "429 Client Error: Too Many Requests for url: https://www.maro-shop.ch/collections/30th-celebration"
     },
     {
       "id": "galaxus",
@@ -90,27 +335,192 @@
     {
       "id": "elitcg",
       "name": "ELITCG",
-      "error": "423 Client Error: Locked for url: https://elitcg.com/collections/pre-order"
+      "error": "429 Client Error: Too Many Requests for url: https://elitcg.com/collections/pre-order"
+    },
+    {
+      "id": "pokeroom",
+      "name": "Pokeroom",
+      "error": "1/3 Produktseiten fehlgeschlagen: https://pokeroom.shop/product/30th-celebration-ultra-premium-collection-en/: 404 Client Error: Not Found for url: https://pokeroom.shop/product/30th-celebration-ultra-premium-collection-en/"
+    },
+    {
+      "id": "plugstars",
+      "name": "Plugstars",
+      "error": "429 Client Error: Too Many Requests for url: https://plugstarsath.com/collections/pokemon-tcg-30th-celebration"
+    },
+    {
+      "id": "nikitastcg",
+      "name": "NikitasTCG",
+      "error": "429 Client Error: Too Many Requests for url: https://nikitastcg.com/"
+    },
+    {
+      "id": "collectorexpert",
+      "name": "Collector Expert",
+      "error": "429 Client Error: Too Many Requests for url: https://collector-expert.de/collections/pokemon-karten"
+    },
+    {
+      "id": "catchemcards",
+      "name": "CatchemCards",
+      "error": "429 Client Error: Too Many Requests for url: https://www.catchemcards.de/collections/pokemon-spezialboxen-tins-sets"
+    },
+    {
+      "id": "nakamastore",
+      "name": "Nakama Store",
+      "error": "429 Client Error: Too Many Requests for url: https://nakama-store.de/search?q=30th&type=product"
+    },
+    {
+      "id": "webbaskartenecke",
+      "name": "Webbas Kartenecke",
+      "error": "429 Client Error: Too Many Requests for url: https://webbas-kartenecke.de/collections/pokemon-englisch"
+    },
+    {
+      "id": "cardclash",
+      "name": "CardClash",
+      "error": "429 Client Error: Too Many Requests for url: https://cardclash.de/collections/pokemon"
+    },
+    {
+      "id": "cardcollector",
+      "name": "Card Collector",
+      "error": "429 Client Error: Too Many Requests for url: https://card-collector.net/collections/pokemon"
+    },
+    {
+      "id": "crocuscards",
+      "name": "Crocus Cards",
+      "error": "429 Client Error: Too Many Requests for url: https://crocus-cards.de/collections/pokemon"
+    },
+    {
+      "id": "teamlunti",
+      "name": "Team Lunti",
+      "error": "429 Client Error: Too Many Requests for url: https://www.teamlunti.de/collections/pokemon"
+    },
+    {
+      "id": "cardgames24",
+      "name": "CardGames24",
+      "error": "429 Client Error: Too Many Requests for url: https://cardgames24.de/collections/pokemon-1"
+    },
+    {
+      "id": "playmaniac",
+      "name": "Play-Maniac",
+      "error": "429 Client Error: Too Many Requests for url: https://playmaniac.de/"
     },
     {
       "id": "xzone",
       "name": "Xzone.de",
-      "error": "2/7 Produktseiten fehlgeschlagen: https://www.xzone.de/kartenspiel-pokemon-tcg-30th-celebration-ultrapremium-collection-day-englische-version: 404 Client Error: Not Found for url: https://www.xzone.de/kartenspiel-pokemon-tcg-30th-celebration-ultrapremium-collection-day-englische-version; https://www.xzone.de/kartenspiel-pokemon-tcg-30th-celebration-ultrapremium-collection-night-englische-version: 404 Client Error: Not Found for url: https://www.xzone.de/kartenspiel-pokemon-tcg-30th-celebration-ultrapremium-collection-night-englische-version"
+      "error": "2/7 Produktseiten fehlgeschlagen: https://www.xzone.de/kartenspiel-pokemon-tcg-30th-celebration-ultrapremium-collection-night-englische-version: 404 Client Error: Not Found for url: https://www.xzone.de/kartenspiel-pokemon-tcg-30th-celebration-ultrapremium-collection-night-englische-version; https://www.xzone.de/kartenspiel-pokemon-tcg-30th-celebration-ultrapremium-collection-day-englische-version: 404 Client Error: Not Found for url: https://www.xzone.de/kartenspiel-pokemon-tcg-30th-celebration-ultrapremium-collection-day-englische-version"
     },
     {
-      "id": "friendscollective",
-      "name": "Friends Collective",
-      "error": "1/4 Produktseiten fehlgeschlagen: https://friends-collective.site/order-preview/pokemon-30th-celebration-espeon-ultra-premium-collection-english-preorder: HTTPSConnectionPool(host='friends-collective.site', port=443): Read timed out. (read timeout=15)"
+      "id": "tobistoys",
+      "name": "Tobis Toys",
+      "error": "429 Client Error: Too Many Requests for url: https://tobistoys.de/collections/pokemon"
+    },
+    {
+      "id": "pushdichtcg",
+      "name": "PUSHDICH-TCG",
+      "error": "429 Client Error: Too Many Requests for url: https://www.pushdich-tcg.de/collections/all"
+    },
+    {
+      "id": "nikacards",
+      "name": "NiKa Cards",
+      "error": "429 Client Error: Too Many Requests for url: https://nikacards.de/collections/pokemon"
+    },
+    {
+      "id": "ollibaba",
+      "name": "Olli-Baba",
+      "error": "429 Client Error: Too Many Requests for url: https://www.olli-baba.de/collections/all"
+    },
+    {
+      "id": "fuhrioustc",
+      "name": "Fuhrious TC",
+      "error": "429 Client Error: Too Many Requests for url: https://fuhrious-tc.shop/collections/pokemon"
     },
     {
       "id": "mocards",
       "name": "MoCards",
-      "error": "1/1 Produktseiten fehlgeschlagen: https://mocards.de/products/30-jahre-boosterbundle: 404 Client Error: Not Found for url: https://mocards.de/products/30-jahre-boosterbundle"
+      "error": "429 Client Error: Too Many Requests for url: https://mocards.de/collections/pokemon-tcg-1"
+    },
+    {
+      "id": "cardsuniques",
+      "name": "Cards-Uniques",
+      "error": "429 Client Error: Too Many Requests for url: https://www.cards-uniques.de/collections/pokemon"
+    },
+    {
+      "id": "neweratcg",
+      "name": "New Era TCG",
+      "error": "429 Client Error: Too Many Requests for url: https://newera-tcg.shop/collections/pokemon"
+    },
+    {
+      "id": "racoonrises",
+      "name": "Racoon Rises",
+      "error": "429 Client Error: Too Many Requests for url: https://racoon-rises.com/collections/pokemon"
+    },
+    {
+      "id": "popatcg",
+      "name": "PoPa TCG",
+      "error": "429 Client Error: Too Many Requests for url: https://popatcg.de/collections/pokemon"
+    },
+    {
+      "id": "hallofgames",
+      "name": "Hall of Games TCG",
+      "error": "429 Client Error: Too Many Requests for url: https://hallofgamestcg.de/collections/pokemon"
+    },
+    {
+      "id": "tcgsiegburg",
+      "name": "TCG-Siegburg",
+      "error": "429 Client Error: Too Many Requests for url: https://www.tcg-siegburg.de/collections/pokemon"
+    },
+    {
+      "id": "glitchless",
+      "name": "Glitchless Game Store",
+      "error": "429 Client Error: Too Many Requests for url: https://glitchless.de/collections/pokemon"
+    },
+    {
+      "id": "lairos",
+      "name": "Lairo's Shop",
+      "error": "429 Client Error: Too Many Requests for url: https://lairos.shop/collections/pokemon"
+    },
+    {
+      "id": "spellbookcelle",
+      "name": "Spellbook Celle",
+      "error": "429 Client Error: Too Many Requests for url: https://spellbook-celle.de/"
+    },
+    {
+      "id": "coolupcards",
+      "name": "CoolUp Cards",
+      "error": "429 Client Error: Too Many Requests for url: https://coolupcards.com/search?q=Pokemon"
+    },
+    {
+      "id": "trinketmage",
+      "name": "Trinket Mage",
+      "error": "429 Client Error: Too Many Requests for url: https://trinket-mage.eu/collections/pokemon"
     },
     {
       "id": "galeria",
       "name": "GALERIA",
       "error": "403 Client Error: Forbidden for url: https://www.galeria.de/kinder/spielzeug/spiele-und-puzzles/gesellschaftsspiele-und-co"
+    },
+    {
+      "id": "tcgfundgrube",
+      "name": "TCG Fundgrube",
+      "error": "429 Client Error: Too Many Requests for url: https://tcg-fundgrube.de/collections/pokemon-englisch"
+    },
+    {
+      "id": "cardbuddys",
+      "name": "CardBuddys",
+      "error": "429 Client Error: Too Many Requests for url: https://cardbuddys.de/search?q=30th&type=product"
+    },
+    {
+      "id": "pokeherze",
+      "name": "PokeHerze",
+      "error": "429 Client Error: Too Many Requests for url: https://pokeherze.de/collections/pokemon-englisch"
+    },
+    {
+      "id": "cardcosmos",
+      "name": "cardcosmos",
+      "error": "429 Client Error: Too Many Requests for url: https://cardcosmos.de/collections/pokemon-karten-englisch"
+    },
+    {
+      "id": "eternalgame",
+      "name": "EternalGame",
+      "error": "429 Client Error: Too Many Requests for url: https://eternalgame.de/collections/pokemon-collections-englisch"
     },
     {
       "id": "bol_nl",
@@ -128,180 +538,185 @@
       "error": "2/7 Produktseiten fehlgeschlagen: https://www.intertoys.nl/pokemon-tcg-30th-celebration-binder-collection: 429 Client Error: Too Many Requests for url: https://www.intertoys.nl/pokemon-tcg-30th-celebration-binder-collection; https://www.intertoys.nl/pokemon-tcg-30th-celebration-elite-trainer-box: 429 Client Error: Too Many Requests for url: https://www.intertoys.nl/pokemon-tcg-30th-celebration-elite-trainer-box"
     },
     {
+      "id": "friendscollective",
+      "name": "Friends Collective",
+      "error": "1/4 Produktseiten fehlgeschlagen: https://friends-collective.site/order-preview/pokemon-30th-celebration-espeon-ultra-premium-collection-english-preorder: HTTPSConnectionPool(host='friends-collective.site', port=443): Read timed out. (read timeout=15)"
+    },
+    {
       "id": "otto",
       "name": "OTTO",
       "error": "21/23 Produktseiten fehlgeschlagen: https://www.otto.de/p/pokemon-sammelkarte-30th-celebration-booster-display-deutsch-und-chinesisch-30th-celebration-jubilaeumsdisplay-20-booster-holografische-karten-S02KU08J/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-30th-celebration-booster-display-deutsch-und-chinesisch-30th-celebration-jubilaeumsdisplay-20-booster-holografische-karten-S02KU08J; https://www.otto.de/p/pokemon-sammelkarte-ordner-kollektion-pokemon-sammel-karten-deutsch-30-jahre-CS00LM0HK/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-ordner-kollektion-pokemon-sammel-karten-deutsch-30-jahre-CS00LM0HK; https://www.otto.de/p/pokemon-sammelkarte-pokemon-tcg-30th-anniversary-elite-trainer-box-englisch-30-jahre-en-jubilaeumsbox-mit-9-boostern-nidorina-promokarte-und-zubehoer-CS08L20YQ/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-pokemon-tcg-30th-anniversary-elite-trainer-box-englisch-30-jahre-en-jubilaeumsbox-mit-9-boostern-nidorina-promokarte-und-zubehoer-CS08L20YQ; https://www.otto.de/p/pokemon-sammelkarte-pokemon-30th-anniversary-celebration-booster-display-m6a-japanisch-CS09L0033/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-pokemon-30th-anniversary-celebration-booster-display-m6a-japanisch-CS09L0033; https://www.otto.de/p/pokemon-sammelkarte-pokemon-30th-anniversary-celebration-booster-display-chn-CS02LG0N4/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-pokemon-30th-anniversary-celebration-booster-display-chn-CS02LG0N4; https://www.otto.de/p/pokemon-sammelkarte-30th-celebration-booster-bundle-en-30-jahre-boosterpacks-CS08L20YR/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-30th-celebration-booster-bundle-en-30-jahre-boosterpacks-CS08L20YR; https://www.otto.de/p/pokemon-sammelkarte-pokemon-30-jahre-psiana-ex-und-nachtara-ex-deck-set-t-chinesisch-S0WKI0G8/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-pokemon-30-jahre-psiana-ex-und-nachtara-ex-deck-set-t-chinesisch-S0WKI0G8; https://www.otto.de/p/pokemon-sammelkarte-30-jahre-booster-pack-deutsch-30th-jubilaeum-anniversary-boosterpack-S02KN0E3/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-30-jahre-booster-pack-deutsch-30th-jubilaeum-anniversary-boosterpack-S02KN0E3; https://www.otto.de/p/pokemon-sammelkarte-feelinara-ex-kollektion-pokemon-sammel-karten-edition-deutsch-CS00LM01I/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-feelinara-ex-kollektion-pokemon-sammel-karten-edition-deutsch-CS00LM01I; https://www.otto.de/p/amigo-spiel-plus-freizeit-gmbh-sammelkarte-pokemon-30-jahre-mini-tin-display-deutsch-CS0GKP025/: 400 Client Error: Bad Request for url: https://www.otto.de/p/amigo-spiel-plus-freizeit-gmbh-sammelkarte-pokemon-30-jahre-mini-tin-display-deutsch-CS0GKP025; https://www.otto.de/p/pokemon-sammelkarte-tin-box-feelinara-pokemon-sammel-karten-kollektion-30-jahre-deutsch-CS03KL0F5/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-tin-box-feelinara-pokemon-sammel-karten-kollektion-30-jahre-deutsch-CS03KL0F5; https://www.otto.de/p/pokemon-sammelkarte-pokemon-30th-anniversary-celebration-futuristic-box-m6a-japanisch-S0BLE0U7/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-pokemon-30th-anniversary-celebration-futuristic-box-m6a-japanisch-S0BLE0U7; https://www.otto.de/p/pokemon-sammelkarte-mewtu-figuren-kollektion-pokemon-sammel-karten-deutsch-30-jahre-CS00LM06A/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-mewtu-figuren-kollektion-pokemon-sammel-karten-deutsch-30-jahre-CS00LM06A; https://www.otto.de/p/pokemon-sammelkarte-2er-blister-30-jahre-jubilaeum-deutsch-CS00KD0EW/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-2er-blister-30-jahre-jubilaeum-deutsch-CS00KD0EW; https://www.otto.de/p/pokemon-sammelkarte-3er-tech-sticker-blister-30-jahre-jubilaeum-CS0AKR0O3/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-3er-tech-sticker-blister-30-jahre-jubilaeum-CS0AKR0O3; https://www.otto.de/p/pokemon-sammelkarte-pokemon-30th-anniversary-celebration-booster-display-m6a-t-chinesisch-CS09L0030/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-pokemon-30th-anniversary-celebration-booster-display-m6a-t-chinesisch-CS09L0030; https://www.otto.de/p/pokemon-sammelkarte-pokemon-30th-anniversary-celebration-sylveon-ex-box-englisch-CS00KN0VJ/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-pokemon-30th-anniversary-celebration-sylveon-ex-box-englisch-CS00KN0VJ; https://www.otto.de/p/pokemon-sammelkarte-tcg-30-jahre-knock-out-kollektion-2-booster-und-1-promo-deutsch-CS0PKT0RU/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-tcg-30-jahre-knock-out-kollektion-2-booster-und-1-promo-deutsch-CS0PKT0RU; https://www.otto.de/p/pokemon-sammelkarte-pokemon-30th-anniversary-celebration-poster-box-englisch-CS08L20YU/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-pokemon-30th-anniversary-celebration-poster-box-englisch-CS08L20YU; https://www.otto.de/p/pokemon-sammelkarte-pokemon-30th-anniversary-celebration-premium-deck-set-umbreon-chinese-CS0LKO0EY/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-pokemon-30th-anniversary-celebration-premium-deck-set-umbreon-chinese-CS0LKO0EY; https://www.otto.de/p/pokemon-sammelkarte-pokemon-30-jahre-tech-sticker-kollektion-lucario-alola-kokowei-deutsch-S0IL20RO/: 400 Client Error: Bad Request for url: https://www.otto.de/p/pokemon-sammelkarte-pokemon-30-jahre-tech-sticker-kollektion-lucario-alola-kokowei-deutsch-S0IL20RO"
     }
   ],
   "shop_timings_ms": {
-    "outpostbrussels": 3597,
-    "kingcards": 4050,
-    "rarecards": 4050,
-    "nosticcards": 4582,
-    "spellenhuis": 732,
-    "tcgviert": 698,
-    "poketcgcenter": 3550,
-    "cardsrfun": 12666,
-    "rubygator": 12473,
-    "geeksheaven": 16703,
-    "lichcards": 18947,
-    "gamesisland": 2014,
-    "tcgshop": 5991,
-    "rossmann": 1313,
-    "collgamers": 9927,
-    "spielekiste": 1081,
-    "hugendubel": 1691,
-    "danihagebeuk": 20067,
-    "bazaarofmagic": 18656,
-    "gildis": 16109,
-    "fantasiacards": 1994,
-    "kofuku": 2100,
-    "battlebear": 2484,
-    "crispycards": 3586,
-    "samycards": 3743,
-    "escamon": 2665,
-    "hawaiicards": 5425,
-    "pokegeodude": 6889,
-    "cardcatcher": 8453,
-    "adventurecardz": 10529,
-    "figurity": 846,
-    "imperialcards": 2227,
-    "balucards": 2736,
-    "breakthecase": 13127,
-    "steeldack": 1186,
-    "karacardz": 3072,
-    "twosleeve": 1487,
-    "sapphirecards": 855,
-    "cardstation": 1095,
-    "varietycards": 6712,
-    "cardcorner": 46036,
-    "gemcards": 10851,
-    "novicgames": 9762,
-    "celestialgameshop": 11408,
-    "feenturm": 11748,
-    "jungleworldtcg": 1626,
-    "pokelumina": 2799,
-    "pokemontcgshop": 3189,
-    "battleofcards": 1533,
-    "mucollectibles": 2608,
-    "deichcards": 2639,
-    "brofessoreich": 6935,
-    "rocketcardstore": 1915,
-    "fancycards24": 2988,
-    "toytreasure": 3515,
-    "kantokiosk": 5082,
-    "ultracomix": 4578,
-    "starzcollectibles": 3060,
-    "duoshop": 459,
-    "pokemonplug": 39149,
-    "tcglove": 19145,
-    "moonshadow": 6028,
-    "hartfelder": 4453,
-    "ideeundspiel": 1271,
-    "lakecards": 839,
-    "peeronline": 1313,
-    "pokestorm": 920,
-    "kartenbucht": 1289,
-    "pokestop": 2112,
-    "pokebrixx": 1219,
-    "mediamarkt": 2593,
-    "saturn": 2490,
-    "spieles": 2961,
-    "pokeking": 1550,
-    "ccncards": 1805,
-    "yonkotcg": 2851,
-    "nettoonline": 292,
-    "kaufland": 549,
-    "tcgshopmoers": 3468,
-    "mayenerfantasyland": 3195,
-    "boosterisland": 3777,
-    "tradingtoys": 11474,
-    "exclusivecardvault": 779,
-    "pruckiscards": 4929,
-    "pokeprinz": 595,
-    "keepseven": 2051,
-    "akihabaratcg": 1793,
-    "krakencards": 439,
-    "bbspiele": 6515,
-    "bayoupokefamily": 2995,
-    "akashicards": 3688,
-    "pokeroom": 3394,
-    "playingcards": 4912,
-    "sealedcardzz": 2501,
-    "kingbreaktcg": 2497,
-    "pokeuri": 3847,
-    "pokesynek": 10915,
-    "kleineskarussell": 9310,
-    "galaxus": 662,
-    "elitcg": 491,
-    "xzone": 7336,
-    "nikitastcg": 4467,
-    "tcgnexus": 1752,
-    "mentastore": 15796,
-    "friendscollective": 17141,
-    "collectorexpert": 2491,
-    "epicpanda": 21200,
-    "plugstars": 12419,
-    "webbaskartenecke": 2799,
-    "nakamastore": 3619,
-    "cardclash": 1637,
-    "cardcollector": 922,
-    "catchemcards": 5334,
-    "drachenheld": 1830,
-    "marogames": 16794,
-    "teamlunti": 1723,
-    "crocuscards": 3878,
-    "pokecado": 21808,
-    "comicattack": 3537,
-    "bulkparadise": 3026,
-    "innventory": 2287,
-    "cardgames24": 3179,
-    "tobistoys": 1116,
-    "pushdichtcg": 1506,
-    "ollibaba": 1235,
-    "amazingtoys": 20402,
-    "cardsuniques": 1126,
-    "nikacards": 1891,
-    "mocards": 1816,
-    "neweratcg": 535,
-    "popatcg": 932,
-    "lairos": 539,
-    "fuhrioustc": 1484,
-    "tcgsiegburg": 479,
-    "hallofgames": 757,
-    "goblinsgnomes": 919,
-    "glitchless": 956,
-    "cardtree": 1094,
-    "playmaniac": 4381,
-    "spellbookcelle": 1441,
-    "galeria": 373,
-    "rofu": 1325,
-    "animany": 1602,
-    "racoonrises": 3885,
-    "coolupcards": 2811,
-    "pokeherze": 1282,
-    "tcgfundgrube": 2232,
-    "eternalgame": 611,
-    "trinketmage": 3544,
-    "pokeice": 589,
-    "smythstoys": 511,
-    "smythstoys_nl": 168,
-    "lotticards": 746,
-    "bol_nl": 387,
-    "dreamland_be": 408,
-    "kingjouet_fr": 1073,
-    "cardbuddys": 4445,
-    "foetex_dk": 1350,
-    "cardcosmos": 4029,
-    "magicfeel": 3491,
-    "bilka_dk": 1140,
-    "br_dk": 1451,
-    "gatetothegames": 4018,
-    "webhallen_se": 1152,
-    "intertoys_nl": 3692,
-    "outland_no": 1878,
-    "verkkokauppa_fi": 3068,
-    "otto": 10049,
-    "prisma_fi": 5362
+    "kingcards": 3044,
+    "nosticcards": 3282,
+    "outpostbrussels": 3453,
+    "rarecards": 3528,
+    "spellenhuis": 639,
+    "tcgviert": 1251,
+    "poketcgcenter": 3290,
+    "rubygator": 5389,
+    "cardsrfun": 9594,
+    "collgamers": 1174,
+    "lichcards": 10180,
+    "geeksheaven": 10195,
+    "pokemonplug": 366,
+    "rossmann": 733,
+    "danihagebeuk": 8029,
+    "gamesisland": 2246,
+    "hugendubel": 2093,
+    "spielekiste": 1400,
+    "breakthecase": 912,
+    "crispycards": 197,
+    "battlebear": 338,
+    "fantasiacards": 366,
+    "tcgshop": 3343,
+    "kofuku": 493,
+    "adventurecardz": 558,
+    "escamon": 622,
+    "balucards": 288,
+    "imperialcards": 397,
+    "karacardz": 514,
+    "figurity": 801,
+    "samycards": 3606,
+    "steeldack": 922,
+    "twosleeve": 621,
+    "gemcards": 620,
+    "pokegeodude": 5015,
+    "hawaiicards": 5804,
+    "cardstation": 1071,
+    "celestialgameshop": 801,
+    "novicgames": 658,
+    "bazaarofmagic": 14900,
+    "varietycards": 534,
+    "gildis": 13680,
+    "brofessoreich": 645,
+    "pokemontcgshop": 372,
+    "pokelumina": 449,
+    "cardcatcher": 8397,
+    "deichcards": 309,
+    "mucollectibles": 674,
+    "battleofcards": 392,
+    "jungleworldtcg": 1492,
+    "fancycards24": 624,
+    "toytreasure": 642,
+    "rocketcardstore": 691,
+    "moonshadow": 413,
+    "kantokiosk": 393,
+    "tradingtoys": 369,
+    "hartfelder": 292,
+    "duoshop": 415,
+    "starzcollectibles": 536,
+    "peeronline": 460,
+    "ultracomix": 1468,
+    "lakecards": 675,
+    "pokestop": 372,
+    "ideeundspiel": 1800,
+    "feenturm": 7396,
+    "pokestorm": 977,
+    "pokebrixx": 331,
+    "kartenbucht": 1194,
+    "mediamarkt": 2528,
+    "saturn": 2222,
+    "pruckiscards": 517,
+    "yonkotcg": 733,
+    "tcglove": 7863,
+    "pokeking": 1830,
+    "ccncards": 166,
+    "nettoonline": 214,
+    "spieles": 4354,
+    "kaufland": 183,
+    "sapphirecards": 10920,
+    "exclusivecardvault": 264,
+    "tcgshopmoers": 3200,
+    "akihabaratcg": 1196,
+    "pokeprinz": 407,
+    "akashicards": 563,
+    "boosterisland": 3407,
+    "kleineskarussell": 352,
+    "bayoupokefamily": 239,
+    "cardcorner": 30532,
+    "mayenerfantasyland": 3122,
+    "krakencards": 407,
+    "sealedcardzz": 265,
+    "kingbreaktcg": 181,
+    "mentastore": 257,
+    "keepseven": 3698,
+    "pokeuri": 482,
+    "pokecado": 132,
+    "pokesynek": 4371,
+    "marogames": 214,
+    "galaxus": 625,
+    "bbspiele": 6571,
+    "elitcg": 334,
+    "pokeroom": 3314,
+    "plugstars": 464,
+    "nikitastcg": 515,
+    "collectorexpert": 440,
+    "playingcards": 4466,
+    "catchemcards": 392,
+    "nakamastore": 196,
+    "webbaskartenecke": 311,
+    "cardclash": 452,
+    "tcgnexus": 1418,
+    "cardcollector": 354,
+    "crocuscards": 905,
+    "teamlunti": 390,
+    "drachenheld": 1773,
+    "cardgames24": 347,
+    "playmaniac": 305,
+    "xzone": 5795,
+    "tobistoys": 656,
+    "pushdichtcg": 857,
+    "nikacards": 1016,
+    "comicattack": 3492,
+    "ollibaba": 699,
+    "innventory": 2545,
+    "fuhrioustc": 437,
+    "mocards": 536,
+    "cardsuniques": 588,
+    "bulkparadise": 4034,
+    "neweratcg": 297,
+    "racoonrises": 239,
+    "popatcg": 458,
+    "hallofgames": 366,
+    "tcgsiegburg": 377,
+    "glitchless": 411,
+    "lairos": 620,
+    "spellbookcelle": 460,
+    "coolupcards": 550,
+    "trinketmage": 614,
+    "goblinsgnomes": 1107,
+    "galeria": 326,
+    "cardtree": 1113,
+    "animany": 763,
+    "tcgfundgrube": 314,
+    "cardbuddys": 333,
+    "rofu": 1142,
+    "pokeherze": 545,
+    "cardcosmos": 482,
+    "eternalgame": 515,
+    "pokeice": 398,
+    "smythstoys": 737,
+    "smythstoys_nl": 387,
+    "lotticards": 853,
+    "bol_nl": 340,
+    "dreamland_be": 486,
+    "kingjouet_fr": 1224,
+    "amazingtoys": 12956,
+    "foetex_dk": 1151,
+    "gatetothegames": 4598,
+    "bilka_dk": 1011,
+    "epicpanda": 16130,
+    "magicfeel": 5430,
+    "br_dk": 1240,
+    "intertoys_nl": 3820,
+    "webhallen_se": 965,
+    "friendscollective": 16566,
+    "outland_no": 1335,
+    "verkkokauppa_fi": 2752,
+    "otto": 10878,
+    "prisma_fi": 5695
   }
 }
